@@ -1,0 +1,52 @@
+@use '../base/settings' as *;
+
+.header {
+    width: 100vw;
+    max-height: 5.4rem;
+    height: 100%;
+    border-bottom: 2px solid $lighter-grey;
+    padding: 0 1.6rem;
+}
+
+.header__content {
+    display: flex;
+}
+
+.header__title {
+    h1 {
+        color: black;
+        font-size: $font-size-medium;
+        letter-spacing: -0.05em; //5%
+        margin: $m-size 0;
+    }
+}
+
+.header__links {
+    display: flex;
+    justify-items: center;
+    align-items: center;
+    margin-left: 1.6rem;
+    a {
+        color: black;
+        font-size: $font-size-medium;
+        align-content: center;
+        text-decoration: none;
+        height: 100%;
+        margin-left: 1.6rem;
+    }
+    .active {
+        border-bottom: 2px solid black;
+    }
+    :first-child {
+        margin-left: 0;
+    }
+}
+
+.header__search {
+    margin: 1.4rem 0 0 auto;
+
+    input {
+        width: 250px;
+        font-size: $font-size-medium;
+    }
+}

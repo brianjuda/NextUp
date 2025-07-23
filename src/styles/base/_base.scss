@@ -1,0 +1,20 @@
+@use 'settings' as *;
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    background-color: $white;
+    color: $grey;
+    font-family: "Inter", Helvetica, Arial, sans-serif;
+    font-size: $m-size;
+    line-height: 100%;
+    place-items: start;
+    overflow-x: hidden;
+}

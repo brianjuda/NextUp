@@ -1,0 +1,28 @@
+@use '../base/settings' as *;
+
+.movie-list {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    height:215px;
+    gap: 0 1rem;
+    :first-child {
+        margin-left: 0;
+    }
+
+    &--full {
+        @extend .movie-list;
+        // display: grid;
+        // grid-template-columns: 1fr 1fr 1fr 1fr;
+        flex-wrap: wrap;
+        height: unset;
+        gap: 4rem 1rem;
+    }
+}
+
+.movie-list__title {
+    font-size: 22px;
+    color: black;
+    font-weight: 400;
+    letter-spacing: 0;
+}

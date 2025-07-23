@@ -1,0 +1,32 @@
+@use '../base/settings' as *;
+
+select {
+    appearance: base-select;
+    // -webkit-appearance: none;
+    // -moz-appearance: none;
+    border: 1px solid $lightest-grey;
+    max-width: 308.5px;
+    width: 100%;
+    margin: 1rem auto;
+    padding: 8px;
+    font-size:1.4rem;
+    line-height: 1;
+
+    
+}
+
+::picker(select) {
+    appearance: base-select;
+}
+
+.in-progress {
+    color: $blue;
+}
+
+.complete {
+    color: $green;
+}
+
+.remove {
+    color: $red;
+}

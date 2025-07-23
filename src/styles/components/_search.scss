@@ -1,0 +1,6 @@
+@use '../base/settings' as *;
+@use './movie-list';
+
+.search-results {
+    @extend .movie-list--full;
+}
