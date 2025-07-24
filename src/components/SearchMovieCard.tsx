@@ -1,6 +1,7 @@
-import FullMovieCardStatus from "./FullMovieCardStatus";
+
 import type { MediaItem } from "../types/types";
 import { useMedia } from "../hooks/hooks";
+import MovieCardStatus from "./MovieCardStatus";
 
 
 export default function SearchMovieCard({ id, title, posterPath, year, genre, media_type, overview }: MediaItem) {
@@ -45,7 +46,7 @@ export default function SearchMovieCard({ id, title, posterPath, year, genre, me
                     { !isInWatchlist && (
                         <button className="button" onClick={handleAddToWatchlist}>Add to watchlist</button>
                     )}
-                    { isInWatchlist && (<FullMovieCardStatus id={id} status={currentStatus} />) }
+                    { isInWatchlist && (<MovieCardStatus id={id} status={currentStatus} />) }
                 </div>
             </div>
         </div>

@@ -3,7 +3,8 @@ import { useMedia } from "../hooks/hooks";
 import { fetchTrending } from "../actions/search";
 import { normalizeMediaItem } from "../actions/normalize";
 import type { MediaItem } from "../types/types";
-import MiniMovieList from './MiniMovieList';
+import MovieList from "./MovieList";
+// import MiniMovieList from './MiniMovieList';
 
 export default function HomeDashboardPage () {
     const data = useMedia();
@@ -23,11 +24,14 @@ export default function HomeDashboardPage () {
         getTrending();
     }, [])
 
+    const inProgressTV = data.data.filter((item) => item.media_type === "tv" && item.status !== "completed");
+    const inProgressMovies = data.data.filter((item) => item.media_type === "movie" && item.status !== "completed");
+
     return (
         <div className="dashboard">
-            <MiniMovieList listTitle={"In Progress TV shows"} listData={data.data.filter(item => item.media_type === "tv").filter(item => item.status !== "completed")} />
-            <MiniMovieList listTitle={"Jump into a saved movie"} listData={data.data.filter(item => item.media_type === "movie").filter(item => item.status !== "completed")} />
-            <MiniMovieList listTitle={"Trending this week"} listData={trending} />
+            <MovieList listTitle="In Progress TV shows" listData={inProgressTV} mode="mini" />
+            <MovieList listTitle="Jump into a saved movie" listData={inProgressMovies} mode="mini" />
+            <MovieList listTitle="Trending this week" listData={trending} mode="trending" />
         </div>
     )
 }

@@ -1,4 +1,4 @@
-import FullMovieList from "./FullMovieList";
+import MovieList from "./MovieList";
 import { useMedia } from "../hooks/hooks";
 
 export default function TVDashboardPage() {
@@ -6,9 +6,10 @@ export default function TVDashboardPage() {
 
     return (
         <div className="dashboard">
-            <FullMovieList 
+            <MovieList 
                 listTitle={"TV shows"} 
                 listData={data.filter(item => item.media_type === "tv")} 
+                mode="watchlist"
             />
         </div>
     )

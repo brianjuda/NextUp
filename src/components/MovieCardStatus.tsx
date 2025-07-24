@@ -1,19 +1,19 @@
 import { useMedia } from "../hooks/hooks";
 import type { WatchStatus } from "../types/types";
 
-export default function FullMovieCardStatus({ id, status }: { id: number, status: WatchStatus }) {
+export default function MovieCardStatus({ id, status }: { id: number, status: WatchStatus }) {
     const { updateStatus, removeMedia } = useMedia();
 
     const handleStatusChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
         const selected = event.target.value;
 
         if (selected === "remove") {
-            console.log(`Removing media with id: ${id}`);
+            // console.log(`Removing media with id: ${id}`);
             removeMedia(id);
             return;
         }
 
-        console.log(`${id} status is now ${event.target.value}`);
+        // console.log(`${id} status is now ${event.target.value}`);
         updateStatus(id, event.target.value as WatchStatus);
     }
 
