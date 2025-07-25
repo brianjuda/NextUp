@@ -1,6 +1,6 @@
 import { signInWithPopup } from "firebase/auth";
 import { auth, provider } from "../firebase/firebase";
-import { useAuth } from "../hooks/hooks";
+import { useAuth } from "../hooks/context";
 
 export default function LoginPage() {
     const { dispatch } = useAuth();

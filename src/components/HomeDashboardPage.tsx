@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { useMedia } from "../hooks/hooks";
+import { useMedia } from "../hooks/context";
 import { fetchTrending } from "../actions/search";
 import { normalizeMediaItem } from "../actions/normalize";
 import type { MediaItem } from "../types/types";

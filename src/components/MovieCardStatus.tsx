@@ -1,4 +1,4 @@
-import { useMedia } from "../hooks/hooks";
+import { useMedia } from "../hooks/context";
 import type { WatchStatus } from "../types/types";
 
 export default function MovieCardStatus({ id, status }: { id: number, status: WatchStatus }) {

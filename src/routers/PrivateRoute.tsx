@@ -1,5 +1,5 @@
 import { Navigate } from "react-router";
-import { useAuth } from "../hooks/hooks";
+import { useAuth } from "../hooks/context";
 
 export default function PrivateRoute({ children }: { children: JSX.Element }) {
     const { user, loading } = useAuth();

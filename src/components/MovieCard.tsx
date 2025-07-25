@@ -1,4 +1,4 @@
-import { useMedia } from "../hooks/hooks";
+import { useMedia } from "../hooks/context";
 import type { MediaItem } from "../types/types";
 import MovieCardStatus from "./MovieCardStatus";
 
