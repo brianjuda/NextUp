@@ -14,6 +14,6 @@ type AuthContextType = {
 
 export const AuthContext = createContext<AuthContextType>({ 
     user: null, 
-    loading: true ,
+    loading: true,
     dispatch: () => {}
 });
