@@ -3,7 +3,7 @@ import type { ReactNode } from "react";
 import { ref, onValue, set, remove } from "firebase/database";
 import { onAuthStateChanged } from "firebase/auth";
 import database, { auth } from "../firebase/firebase";
-import { useAuth } from "../hooks/hooks";
+import { useAuth } from "../hooks/context";
 import authReducer from "../reducers/auth";
 import { mediaReducer } from "../reducers/lists";
 import type { MediaState, MediaItem, WatchStatus } from "../types/types";

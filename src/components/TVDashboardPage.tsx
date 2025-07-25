@@ -1,14 +1,16 @@
 import MovieList from "./MovieList";
-import { useMedia } from "../hooks/hooks";
+import MovieListFilters from "./MovieListFilters";
+import useFilter from "../hooks/filters";
 
 export default function TVDashboardPage() {
-    const { data } = useMedia();
+    const { filteredData, availableGenres, handleFilterChange } = useFilter("tv");
 
     return (
         <div className="dashboard">
+            <MovieListFilters genres={availableGenres} onChange={handleFilterChange} />
             <MovieList 
-                listTitle={"TV shows"} 
-                listData={data.filter(item => item.media_type === "tv")} 
+                listTitle="TV shows"
+                listData={filteredData} 
                 mode="watchlist"
             />
         </div>
