@@ -7,7 +7,7 @@ export default function Header () {
         <div className="content-container">
             <div className="header__content">
                 <div className="header__title" >
-                    <h1>IM WATCHING</h1>
+                    <h1>NextUp</h1>
                 </div>
                 <div className="header__links">
                     <NavLink to="/">
