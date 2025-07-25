@@ -3,6 +3,8 @@
 .button {
     max-width: 308.5px;
     width: 100%;
+    max-height: 4rem;
+    height: 4rem;
     margin: 1rem auto;
     background: #252525;
     color: #fff;
@@ -11,5 +13,17 @@
     padding: 8px;
     font-weight: 500;
     font-size: 1.4rem;
-    line-height: normal;
+    line-height: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+.button::before {
+    content: url('/icons/add.svg');
+    display: inline-block; 
+    color: #fff;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
 }
