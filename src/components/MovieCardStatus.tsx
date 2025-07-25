@@ -20,13 +20,13 @@ export default function MovieCardStatus({ id, status }: { id: number, status: Wa
     return (
         <div className="movie-card__interact">
             <select name="selectStatus" 
-                className="select" 
+                className={`select ${status}`}
                 value={status}
                 onChange={handleStatusChange}
                 >
-                <option value="toWatch">On watchlist</option>
-                <option value="watching" className="in-progress">In progress</option>
-                <option value="completed" className="complete">Completed</option>
+                <option value="toWatch" className="toWatch">On watchlist</option>
+                <option value="watching" className="watching">In progress</option>
+                <option value="completed" className="completed">Completed</option>
                 <option value="remove" className="remove">Remove from watchlist</option>
             </select>
         </div>
