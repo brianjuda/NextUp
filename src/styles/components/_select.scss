@@ -5,28 +5,61 @@ select {
     // -webkit-appearance: none;
     // -moz-appearance: none;
     border: 1px solid $lightest-grey;
+    border-radius: 4px;
     max-width: 308.5px;
+    max-height: 4rem;
     width: 100%;
+    height: 4rem;
     margin: 1rem auto;
     padding: 8px;
-    font-size:1.4rem;
+    font-size: 1.4rem;
     line-height: 1;
-
-    
 }
 
 ::picker(select) {
     appearance: base-select;
 }
 
-.in-progress {
+.movie-card__interact {
+    select {
+        line-height: 1.4rem;
+        display: flex;
+        align-items: center;
+    }
+}
+
+
+.watching::before {
+    content: url('/icons/progress.svg');
+    display: inline-block;
     color: $blue;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
 }
 
-.complete {
+.completed::before {
+    content: url('/icons/complete.svg');
+    display: inline-block;
     color: $green;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
 }
 
-.remove {
+.remove::before {
+    content: url('/icons/remove.svg');
     color: $red;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
+}
+
+.toWatch::before {
+    content: url('/icons/watchlist.svg');
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    margin-right: 8px;
 }
