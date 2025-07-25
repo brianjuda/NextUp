@@ -1,11 +1,16 @@
 import type { User } from "firebase/auth";
 
+export type AuthState = {
+    user: User | null;
+    loading: boolean;
+}
+
 export type AuthAction = 
     | { type: "LOGIN", user: User }
     | { type: "LOGOUT" }
     | { type: "SET_LOADING"; loading: boolean}
 
-export default function authReducer (state = {}, action: AuthAction) {
+export default function authReducer (state: AuthState, action: AuthAction) {
     switch (action.type) {
         case 'LOGIN':
             return {

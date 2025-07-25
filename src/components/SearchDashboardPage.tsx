@@ -3,6 +3,7 @@ import { useLocation } from "react-router"
 import { searchMedia } from "../actions/search";
 import { normalizeMediaItem } from "../actions/normalize";
 import SearchMovieCard from "./SearchMovieCard";
+import type { MediaItem } from "../types/types";
 
 function useQuery() {
     return new URLSearchParams(useLocation().search);
@@ -10,7 +11,7 @@ function useQuery() {
 
 export default function SearchDashboardPage() {
     const query = useQuery().get("query");
-    const [results, setResults] = useState([]);
+    const [results, setResults] = useState<MediaItem[]>([]);
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
@@ -18,7 +19,7 @@ export default function SearchDashboardPage() {
 
         setLoading(true);
         searchMedia(query)
-            .then(data => {
+            .then((data: MediaItem[]) => { // Explicitly type the data returned by searchMedia
                 const normalized = data.map(normalizeMediaItem);
                 setResults(normalized);
             })

@@ -6,18 +6,19 @@ import database, { auth } from "../firebase/firebase";
 import { useAuth } from "../hooks/context";
 import authReducer from "../reducers/auth";
 import { mediaReducer } from "../reducers/lists";
-import type { MediaState, MediaItem, WatchStatus } from "../types/types";
 import { MediaContext } from "./media";
 import { AuthContext } from "./auth";
+import type { MediaState, MediaItem, WatchStatus } from "../types/types";
 
 const initialState: MediaState = {
     data: [],
 };
 
 export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
+
     const [state, dispatch] = useReducer(authReducer, {
         user: null,
-        loading: true
+        loading: true,
     });
 
     useEffect(() => {
@@ -35,7 +36,7 @@ export const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }, []);
 
     return (
-        <AuthContext.Provider value={{ ...state, dispatch }}>
+        <AuthContext.Provider value={{ user: state.user, loading: state.loading, dispatch }}>
             {children}
         </AuthContext.Provider>
     )
