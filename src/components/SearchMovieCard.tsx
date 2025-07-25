@@ -4,8 +4,13 @@ import { useMedia } from "../hooks/context";
 import MovieCardStatus from "./MovieCardStatus";
 
 
-export default function SearchMovieCard({ id, title, posterPath, year, genre, media_type, overview }: MediaItem) {
-    const posterImage = 'https://image.tmdb.org/t/p/w500' + posterPath;
+export default function SearchMovieCard({ id, title, posterPath, backdropPath, year, genre, media_type, overview }: MediaItem) {
+    // Prefer backdropPath for hero image, fallback to posterPath
+    const heroImage = backdropPath
+        ? `https://image.tmdb.org/t/p/w342${backdropPath}`
+        : posterPath
+            ? `https://image.tmdb.org/t/p/w342${posterPath}`
+            : null;
 
     const { data, addMedia } = useMedia();
 
@@ -18,6 +23,7 @@ export default function SearchMovieCard({ id, title, posterPath, year, genre, me
             id,
             title,
             posterPath,
+            backdropPath,
             year,
             genre,
             media_type,
@@ -30,8 +36,8 @@ export default function SearchMovieCard({ id, title, posterPath, year, genre, me
         <div className="movie-card--full">
             {/* hero image */}
             <div className="movie-card__hero">
-                {posterPath ? (
-                    <img className="movie-card__hero-img" src={posterImage} />
+                {heroImage ? (
+                    <img className="movie-card__hero-img" src={heroImage} />
                 ) : (
                     <div className="movie-card__hero-img placeholder" />
                 )}
