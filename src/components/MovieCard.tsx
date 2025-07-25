@@ -4,6 +4,7 @@ import MovieCardStatus from "./MovieCardStatus";
 
 type MovieCardProps = MediaItem & {
     mode: "mini" | "search" | "watchlist" | "trending" ;
+    backdropPath?: string;
 };
 
 export default function MovieCard({
@@ -16,14 +17,20 @@ export default function MovieCard({
     status,
     overview,
     mode,
+    backdropPath,
 }: MovieCardProps) {
     const { data, addMedia } = useMedia();
 
-    const posterImage = posterPath ? `https://image.tmdb.org/t/p/w500${posterPath}` : null;
-
-    const isInWatchlist = data.some(item => item.id === id && item.media_type === media_type)
+    const isInWatchlist = data.some(item => item.id === id && item.media_type === media_type);
     const mediaItem = data.find(item => item.id === id && item.media_type === media_type);
     const currentStatus = mediaItem?.status ?? "toWatch";
+
+    // Prefer backdropPath for hero image, fallback to posterPath
+    const heroImage = backdropPath
+        ? `https://image.tmdb.org/t/p/w342${backdropPath}`
+        : posterPath
+            ? `https://image.tmdb.org/t/p/w342${posterPath}`
+            : null;
 
     const handleAddToWatchlist = () => {
         addMedia({
@@ -42,8 +49,8 @@ export default function MovieCard({
         <div className={(mode === "search" || mode === "trending" || mode === "watchlist") ? "movie-card--full" : "movie-card"}>
             {/* Hero Image */}
             <div className="movie-card__hero">
-                {posterImage ? (
-                    <img className="movie-card__hero-img" src={posterImage} alt={title} />
+                {heroImage ? (
+                    <img className="movie-card__hero-img" src={heroImage} alt={title} />
                 ) : (
                     <div className="movie-card__hero-img placeholder" />
                 )}

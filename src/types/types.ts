@@ -6,6 +6,7 @@ export interface MediaItem {
     media_type: MediaType;
     title: string;
     posterPath: string;
+    backdropPath?: string;
     genre: string;
     year: number;
     overview: string;

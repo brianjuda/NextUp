@@ -36,6 +36,7 @@ export function normalizeMediaItem(raw: any): MediaItem {
         title,
         name,
         poster_path,
+        backdrop_path,
         genre_ids,
         first_air_date,
         release_date,
@@ -51,6 +52,7 @@ export function normalizeMediaItem(raw: any): MediaItem {
         media_type,
         title: media_type === "tv" ? name : title,
         posterPath: poster_path ?? "",
+        backdropPath: backdrop_path ?? "",
         genre,
         status: "toWatch", //default status when added from search
         year,

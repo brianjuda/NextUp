@@ -1,5 +1,6 @@
 @use '../base/settings' as *;
 
 .dashboard {
+    width: 100vw;
     margin: $xl-size;
 }
