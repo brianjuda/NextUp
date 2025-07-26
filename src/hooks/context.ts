@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { MediaContext } from "../context/media";
 import { AuthContext } from "../context/auth";
+import type { AuthContextType } from "../types/types";
 
 export const useMedia = () => {
     const context = useContext(MediaContext);
@@ -8,4 +9,10 @@ export const useMedia = () => {
     return context;
 }
 
-export const useAuth = () => useContext(AuthContext);
+export const useAuth = (): AuthContextType => {
+    const context = useContext(AuthContext);
+    if (!context) {
+        throw new Error("useAuth must be used within an AuthProvider");
+    }
+    return context;
+};
