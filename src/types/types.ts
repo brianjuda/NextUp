@@ -1,7 +1,7 @@
-import type { AuthAction } from "../reducers/auth";
+import type { User } from "firebase/auth";
 
-type MediaType = "movie" | "tv";
 export type WatchStatus = "toWatch" | "watching" | "completed";
+type MediaType = "movie" | "tv";
 
 export interface MediaItem {
     id: number;
@@ -19,8 +19,20 @@ export interface MediaState {
     data: MediaItem[];
 }
 
-export interface AuthContextType {
-    user: { uid: string } | null; // Adjust the user type as per your Firebase user object
+export type AuthState = {
+    user: User | null;
     loading: boolean;
-    dispatch: React.Dispatch<AuthAction>;
+}
+
+export type AuthAction = 
+    | { type: "LOGIN", user: User }
+    | { type: "LOGOUT" }
+    | { type: "SET_LOADING"; loading: boolean}
+
+
+
+export type AuthContextType = {
+    user: User | null;
+    loading: boolean;
+    dispatch: React.Dispatch<AuthAction>
 }
