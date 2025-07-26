@@ -9,6 +9,12 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
+      - name: Load VITE_FIREBASE_CONFIG
+        run: |
+          echo '${{ secrets.VITE_FIREBASE_CONFIG }}' > env.json
+          cat env.json | jq -r 'to_entries | map("export \(.key)=\(.value|tostring)") | .[]' >> $GITHUB_ENV
+
+
       - name: Install dependencies
         run: yarn install --frozen-lockfile
 
