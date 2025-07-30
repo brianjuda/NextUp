@@ -67,3 +67,27 @@
 .movie-card__interact {
     text-align: center;
 }
+
+@media screen and (max-width: $breakpoint-mobile) {
+    .movie-card {
+        max-width: 175.5px;
+        max-height: 204.5px;
+
+        &--full {
+            max-height: 250px;
+        }
+    }
+
+    .movie-card__hero-img {
+        max-height: 150px;
+    }
+
+    .movie-card__details {
+        h3 {
+            font-size: $font-size-medium;
+        }
+        p {
+            font-size: $font-size-small;
+        }
+    }
+}
