@@ -19,6 +19,9 @@
         letter-spacing: -0.05em; //5%
         margin: $m-size 0;
     }
+    @media (max-width: $breakpoint-mobile) {
+        display: none;
+    }
 }
 
 .header__links {
@@ -49,4 +52,8 @@
         width: 250px;
         font-size: $font-size-medium;
     }
+}
+
+@media screen and (max-width: $breakpoint-mobile) {
+
 }
