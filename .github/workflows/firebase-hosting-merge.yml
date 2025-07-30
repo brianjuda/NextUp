@@ -14,8 +14,8 @@ jobs:
           echo '${{ secrets.VITE_ENV_VARS }}' > env.json
           cat env.json | jq -r 'to_entries | map("export \(.key)=\(.value|tostring)") | .[]' >> $GITHUB_ENV
 
-      - name: Debug environment variables
-        run: env | grep VITE_
+      # - name: Debug environment variables
+      #   run: env | grep VITE_
 
       - name: Install dependencies
         run: yarn install --frozen-lockfile
