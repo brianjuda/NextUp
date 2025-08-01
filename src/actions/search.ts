@@ -25,7 +25,7 @@ export async function fetchTrendingMovies() {
     }
 
     const data = await res.json();
-    const normalized = data.results.map(normalizeMediaItem);
+    const normalized = data.results.map(item => normalizeMediaItem(item, "movie"));
 
     return normalized;
 }
@@ -38,7 +38,7 @@ export async function fetchTrendingTV() {
     }
 
     const data = await res.json();
-    const normalized = data.results.map(normalizeMediaItem);
+    const normalized = data.results.map(item => normalizeMediaItem(item, "tv"));
 
     return normalized;
 }
@@ -51,7 +51,7 @@ export async function fetchDetails( media_type: MediaType, id: number ) {
     }
 
     const data = await res.json();
-    const normalized = normalizeMediaItem(data);
+    const normalized = normalizeMediaItem(data, media_type);
 
     return normalized;
 }
