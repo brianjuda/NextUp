@@ -5,6 +5,7 @@ import HomeDashboardPage from '../components/HomeDashboardPage';
 import TVDashboardPage from '../components/TVDashboardPage';
 import MovieDashboardPage from '../components/MovieDashboardPage';
 import SearchDashboardPage from '../components/SearchDashboardPage';
+import MovieDetailsPage from '../components/MovieDetailsPage';
 import PrivateRoute from './PrivateRoute';
 import PublicRoute from './PublicRoute';
 
@@ -42,6 +43,11 @@ export default function AppRouter () {
                 <Route path="/search" element={
                     <PrivateRoute>
                         <SearchDashboardPage />
+                    </PrivateRoute>
+                } />
+                <Route path="/details/:media_type/:id" element={
+                    <PrivateRoute>
+                        <MovieDetailsPage  />
                     </PrivateRoute>
                 } />
             </Routes>

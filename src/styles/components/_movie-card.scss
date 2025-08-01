@@ -47,11 +47,16 @@
     h3 {
         font-size: $font-size-small;
         font-weight: 400;
-        line-height: 1;
+        line-height: 1.1;
         margin: 0 0 1rem 0;
         color: black;
         text-wrap: nowrap;
-        overflow: hidden;        
+        overflow-x: hidden;   
+        
+        a {
+            color: black;
+            text-decoration: none;;
+        }
     }
     p {
         font-size: $font-size-small;

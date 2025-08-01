@@ -1,4 +1,4 @@
-
+import { Link } from "react-router";
 import type { MediaItem } from "../types/types";
 import { useMedia } from "../hooks/context";
 import MovieCardStatus from "./MovieCardStatus";
@@ -44,7 +44,11 @@ export default function SearchMovieCard({ id, title, posterPath, backdropPath, y
             </div>
             <div className="movie-card__details">
                 {/* title */}
-                <h3>{title}</h3>
+                <h3>
+                    <Link to={`/details/${media_type}/${id}`}>
+                        {title}
+                    </Link>
+                </h3>
                 {/* details */}
                 <p>{genre} <span>&middot;</span> {year}</p>
                 {/* cta */} 

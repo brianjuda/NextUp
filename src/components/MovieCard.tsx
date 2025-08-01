@@ -1,10 +1,10 @@
+import { Link } from "react-router";
 import { useMedia } from "../hooks/context";
 import type { MediaItem } from "../types/types";
 import MovieCardStatus from "./MovieCardStatus";
 
 type MovieCardProps = MediaItem & {
     mode: "mini" | "search" | "watchlist" | "trending" ;
-    backdropPath?: string;
 };
 
 export default function MovieCard({
@@ -58,7 +58,9 @@ export default function MovieCard({
 
             {/* Details */}
             <div className="movie-card__details">
-                <h3>{title}</h3>
+                <h3><Link to={`/details/${media_type}/${id}`}>
+                            {title}
+                    </Link></h3>
                 <p>{genre} <span>&middot;</span> {year}</p>
 
                 {/* Interactions */}
