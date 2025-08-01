@@ -7,11 +7,10 @@ import { fetchDetails } from "../actions/search";
 
 export default function MovieDetailsPage() {
     const { media_type, id } = useParams<{ media_type: string; id: string }>();
-    const { data, addMedia } = useMedia();
-
+    const mediaType = media_type as MediaType;
     const new_id = id ? parseInt(id) : NaN;
-
-    // const mediaItem = data.find(item => item.id === new_id && item.media_type === media_type);
+    
+    const { data, addMedia } = useMedia();
 
     const [mediaItem, setMediaItem] = useState<MediaItem | null>(null);
     const [loading, setLoading] = useState(false);
@@ -23,7 +22,7 @@ export default function MovieDetailsPage() {
         } else {
             setLoading(true);
             setError(null);
-            fetchDetails(media_type as MediaType, new_id)
+            fetchDetails(mediaType, new_id)
                 .then(item => setMediaItem(item))
                 .catch(err => setError(`Failed to fetch details: ${err.message}`))
                 .finally(() => setLoading(false));
@@ -57,7 +56,7 @@ export default function MovieDetailsPage() {
             posterPath,
             year,
             genre,
-            media_type,
+            media_type: mediaType,
             status: "toWatch",
             overview
         });

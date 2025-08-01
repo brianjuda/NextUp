@@ -1,4 +1,4 @@
-import type { MediaItem } from "../types/types"
+import type { MediaItem, MediaType } from "../types/types"
 
 const GENRE_ID_MAP: Record<number, string> = {
     28: "Action",
