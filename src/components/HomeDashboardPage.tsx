@@ -1,10 +1,9 @@
 import { useState, useEffect } from "react";
 import { useMedia } from "../hooks/context";
-import { fetchTrending, fetchTrendingMovies, fetchTrendingTV } from "../actions/search";
+import { fetchTrendingMovies, fetchTrendingTV } from "../actions/search";
 import { normalizeMediaItem } from "../actions/normalize";
 import type { MediaItem } from "../types/types";
 import MovieList from "./MovieList";
-// import MiniMovieList from './MiniMovieList';
 
 export default function HomeDashboardPage () {
     const data = useMedia();
