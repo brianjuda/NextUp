@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { useMedia } from "../hooks/context";
-import { fetchTrending } from "../actions/search";
+import { fetchTrending, fetchTrendingMovies, fetchTrendingTV } from "../actions/search";
 import { normalizeMediaItem } from "../actions/normalize";
 import type { MediaItem } from "../types/types";
 import MovieList from "./MovieList";
@@ -8,20 +8,31 @@ import MovieList from "./MovieList";
 
 export default function HomeDashboardPage () {
     const data = useMedia();
-    const [trending, setTrending] = useState<MediaItem[]>([])
+    const [trendingMovies, setTrendingMovies] = useState<MediaItem[]>([]);
+    const [trendingTV, setTrendingTV] = useState<MediaItem[]>([]);
 
     useEffect(() => {
-        const getTrending = async () => {
+        const getTrendingMovies = async () => {
             try {
-                const results = await fetchTrending();
+                const results = await fetchTrendingMovies();
                 const normalized = results.map(normalizeMediaItem);
-                setTrending(normalized);
+                setTrendingMovies(normalized);
             } catch (error) {
-                console.error("Failed to fetch trending media", error);
+                console.error("Failed to fetch trending movies", error);
             }
         };
-
-        getTrending();
+        const getTrendingTV = async () => {
+            try {
+                const results = await fetchTrendingTV();
+                const normalized = results.map(normalizeMediaItem);
+                setTrendingTV(normalized);
+            } catch (error) {
+                console.error("Failed to fetch trending TV", error);
+            }
+        };
+        
+        getTrendingMovies();
+        getTrendingTV();
     }, [])
 
     const inProgressTV = data.data.filter((item) => item.media_type === "tv" && item.status !== "completed");
@@ -31,7 +42,8 @@ export default function HomeDashboardPage () {
         <div className="dashboard">
             <MovieList listTitle="In Progress TV shows" listData={inProgressTV} mode="mini" />
             <MovieList listTitle="Jump into a saved movie" listData={inProgressMovies} mode="mini" />
-            <MovieList listTitle="Trending this week" listData={trending} mode="trending" />
+            <MovieList listTitle="Trending Movies this week" listData={trendingMovies} mode="trending" />
+            <MovieList listTitle="Trending TV this week" listData={trendingTV} mode="trending" />
         </div>
     )
 }
