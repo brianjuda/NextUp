@@ -1,7 +1,7 @@
 import type { User } from "firebase/auth";
 
 export type WatchStatus = "toWatch" | "watching" | "completed";
-type MediaType = "movie" | "tv";
+export type MediaType = "movie" | "tv";
 
 export interface MediaItem {
     id: number;

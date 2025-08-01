@@ -29,7 +29,7 @@ const GENRE_ID_MAP: Record<number, string> = {
     10764: "Reality",
 };
 
-export function normalizeMediaItem(raw: any): MediaItem {
+export function normalizeMediaItem(raw: any, param_type?: MediaType): MediaItem {
     const {
         id,
         media_type,
@@ -37,20 +37,23 @@ export function normalizeMediaItem(raw: any): MediaItem {
         name,
         poster_path,
         backdrop_path,
+        genres,
         genre_ids,
         first_air_date,
         release_date,
         overview
     } = raw;
 
-    const genre = genre_ids?.length ? GENRE_ID_MAP[genre_ids[0]] || "Unknown" : "Unknown";
-    const yearString = media_type === "tv" ? first_air_date : release_date;
+    const res_type = param_type || media_type;
+
+    const genre = genres?.length ? genres[0].name : genre_ids?.length ? GENRE_ID_MAP[genre_ids[0]] || "Unknown" : "Unknown";
+    const yearString = res_type === "tv" ? first_air_date : release_date;
     const year = yearString ? parseInt(yearString.split("-")[0]) : 0;
 
     return {
         id,
-        media_type,
-        title: media_type === "tv" ? name : title,
+        media_type: res_type,
+        title: res_type === "tv" ? name : title,
         posterPath: poster_path ?? "",
         backdropPath: backdrop_path ?? "",
         genre,
