@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocation } from "react-router"
 import { searchMedia } from "../actions/search";
-import { normalizeMediaItem } from "../actions/normalize";
 import SearchMovieCard from "./SearchMovieCard";
 import type { MediaItem } from "../types/types";
 
@@ -19,9 +18,8 @@ export default function SearchDashboardPage() {
 
         setLoading(true);
         searchMedia(query)
-            .then((data: MediaItem[]) => { // Explicitly type the data returned by searchMedia
-                const normalized = data.map(normalizeMediaItem);
-                setResults(normalized);
+            .then((data: MediaItem[]) => {
+                setResults(data);
             })
             .catch(err => console.error("Search error:", err))
             .finally(() => setLoading(false));
