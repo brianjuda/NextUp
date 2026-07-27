@@ -11,7 +11,8 @@ jobs:
 
       - name: Load VITE_FIREBASE_CONFIG
         run: |
-          echo '${{ secrets.VITE_FIREBASE_CONFIG }}' > env.json
+          set -euo pipefail
+          echo '${{ secrets.VITE_ENV_VARS }}' > env.json
           cat env.json | jq -r 'to_entries | map("export \(.key)=\(.value|tostring)") | .[]' >> $GITHUB_ENV
 
 
