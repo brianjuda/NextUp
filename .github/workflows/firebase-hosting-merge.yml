@@ -13,7 +13,7 @@ jobs:
         run: |
           set -euo pipefail
           echo '${{ secrets.VITE_ENV_VARS }}' > env.json
-          cat env.json | jq -r 'to_entries | map("export \(.key)=\(.value|tostring)") | .[]' >> $GITHUB_ENV
+          cat env.json | jq -r 'to_entries | map("\(.key)=\(.value|tostring)") | .[]' >> $GITHUB_ENV
 
 
       - name: Install dependencies
